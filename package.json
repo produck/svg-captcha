@@ -1,0 +1,32 @@
+{
+  "name": "svg-captcha",
+  "version": "0.9.0",
+  "description": "generate svg captcha in node.js or express.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steambap/svg-captcha.git"
+  },
+  "keywords": [
+    "captcha",
+    "svg",
+    "node captcha",
+    "captcha generator"
+  ],
+  "author": {
+    "name": "Weilin Shi",
+    "email": "934587911@qq.com",
+    "url": "steambap.github.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/steambap/svg-captcha/issues"
+  },
+  "homepage": "https://github.com/steambap/svg-captcha#readme",
+  "dependencies": {
+    "text-to-svg": "^3.0.1"
+  }
+}
