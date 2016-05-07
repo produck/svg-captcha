@@ -1,7 +1,7 @@
 const assert = require('assert');
 const svgCaptcha = require('./');
 
-for (var i = 0;i < 50;i++) {
+for (var i = 0; i < 50; i++) {
 	var text = svgCaptcha.randomText();
 	assert(/^[0-9a-zA-Z]+$/.test(text));
 }

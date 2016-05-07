@@ -9,7 +9,7 @@ const randomInt = function (min, max) {
 exports.int = randomInt;
 
 exports.greyColor = function () {
-	const int = randomInt(2, 9).toString(16);
+	const int = randomInt(1, 9).toString(16);
 
 	return '#' + int + int + int;
 };
