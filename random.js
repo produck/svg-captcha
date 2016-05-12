@@ -8,8 +8,10 @@ const randomInt = function (min, max) {
 
 exports.int = randomInt;
 
-exports.greyColor = function () {
-	const int = randomInt(1, 9).toString(16);
+exports.greyColor = function (min, max) {
+	min = min || 1;
+	max = max || 9;
+	const int = randomInt(min, max).toString(16);
 
 	return '#' + int + int + int;
 };

@@ -4,14 +4,11 @@ const textToSVG = require('text-to-svg').loadSync();
 const random = require('./random');
 
 const generateBackground = function (width, height) {
-	const f = random.int(40, 55);
+	const seed = random.int(0, 1010101010);
 
 	return `<filter id="n" x="0" y="0">
-		<feTurbulence
-			type="fractalNoise"
-			baseFrequency="0.${f}"
-			numOctaves="15"
-			stitchTiles="stitch"/>
+		<feTurbulence baseFrequency=".7,.07" seed="${seed}"/>
+			<feColorMatrix type="luminanceToAlpha"/>
 		</filter>
 		<rect width="${width}" height="${height}" filter="url(#n)" opacity="0.2"/>`;
 };
@@ -39,10 +36,34 @@ const getLineNoise = function (lv, width, height) {
 
 const getSVGOptions = function (width, height) {
 	return {
-		x: width / 2, y: height / 2, fontSize: Math.floor(height * 0.72),
-		anchor: 'center middle',
+		x: 0, y: height / 2, fontSize: Math.floor(height * 0.72),
+		anchor: 'left middle',
 		attributes: {fill: 'red', stroke: 'black'}
 	};
+};
+
+const getText = function (text, width, height) {
+	const toSVGOptions = getSVGOptions(width, height);
+	const len = text.length;
+	const spacing = (width - 10) / (len + 1);
+	var i = -1;
+	var out = [];
+	
+	while (++i < len) {
+		var charPath = textToSVG.getD(text[i], toSVGOptions);
+		// randomly scale it to 95% - 105%, skew
+		var randomScale = random.int(95, 105) / 100;
+		var randomTranslateX = (i + 1) * spacing + random.int(-2, 2);
+		var randomTranslateY = random.int(-3, 3);
+		var color = random.greyColor(0, 4);
+		var randomSkewX = random.int(-7, 7);
+		out.push(`<path fill="${color}" d="${charPath}"
+			transform="scale(${randomScale})
+			translate(${randomTranslateX},${randomTranslateY})
+			skewX(${randomSkewX})"/>`);
+	}
+
+	return out.join('');
 };
 
 const createCaptcha = function (options) {
@@ -57,16 +78,15 @@ const createCaptcha = function (options) {
 
 	const lineNoise = getLineNoise(noiseLv, width, height);
 	const bg = generateBackground(width, height);
-	const toSVGOptions = getSVGOptions(width, height);
-	const textPath = textToSVG.getD(text, toSVGOptions);
+	const textPath = getText(text, width, height);
 	const xml = `<svg xmlns="http://www.w3.org/2000/svg"
 		width="${width}" height="${height}">
-			<path fill="black" d="${textPath}" />
+			${textPath}
 			${lineNoise}
 			${bg}
 		</svg>`;
 
-	return xml;
+	return xml.replace('\t', '');
 };
 
 module.exports = createCaptcha;
