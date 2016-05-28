@@ -9,11 +9,35 @@ generate svg captcha in node.js
 - cannot or do not want to use google recaptcha
 - have issue with install c++ addon
 
+## usage
+```
+var svgCaptcha = require('svg-captcha');
+// generate random text of length 4
+var text = svgCaptcha.randomText();
+// generate svg image
+var captcha = svgCaptcha(text);
+```
+with express
+```
+var svgCaptcha = require('svg-captcha');
+
+app.get('/captcha', function (req, res) {
+	var text = svgCaptcha.randomText();
+	var captcha = svgCaptcha(text);
+	req.session.captcha = text;
+	
+	res.set('Content-Type', 'image/svg+xml');
+	res.status(200).send(captcha);
+});
+```
+
+## sample image
+![image](media/example.svg)
+
 ## why use svg?
 
-My colleage and I have issue installing c++ addon on windows and we don't want to mess with python and visual studio.  
-Initially we thought that using svg will result in larger file,  
-but it turns out that it's smaller than the jpeg captcha.
+It does not require any c++ addon.  
+It uses opentype.js underneath and the result image is smaller than jpeg image.
 
 ## Translations
 [中文](README_CN.md)

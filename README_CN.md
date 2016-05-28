@@ -9,11 +9,35 @@
 - 无法使用 google recaptcha
 - 无法安装 c++ 模块
 
+## 使用方法
+```
+var svgCaptcha = require('svg-captcha');
+// generate random text of length 4
+var text = svgCaptcha.randomText();
+// generate svg image
+var captcha = svgCaptcha(text);
+```
+在 express中使用
+```
+var svgCaptcha = require('svg-captcha');
+
+app.get('/captcha', function (req, res) {
+	var text = svgCaptcha.randomText();
+	var captcha = svgCaptcha(text);
+	req.session.captcha = text;
+	
+	res.set('Content-Type', 'image/svg+xml');
+	res.status(200).send(captcha);
+});
+```
+
+## 图片示例
+![image](media/example.svg)
+
 ## 为什么使用 svg 格式?
 
-我和我的同事都是用windows系统，不想使用 c++ 模块。  
-但现有的验证码生成都是基于 c++ 的。  
-svg 格式的验证码竟然比 jpg 格式的还要小。  
+不需要引用 c++ 模块。  
+使用 opentype.js了，而且svg图片比jpeg格式图片要小
 
 ## Translations
 [中文](README_CN.md)

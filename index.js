@@ -4,7 +4,7 @@ const textToSVG = require('text-to-svg').loadSync();
 const random = require('./random');
 
 const generateBackground = function (width, height) {
-	const seed = random.int(0, 1010101010);
+	const seed = random.int(0, 10);
 
 	return `<filter id="n" x="0" y="0">
 		<feTurbulence baseFrequency=".7,.07" seed="${seed}"/>
@@ -34,33 +34,28 @@ const getLineNoise = function (lv, width, height) {
 	return noiseString.join('');
 };
 
-const getSVGOptions = function (width, height) {
+const getSVGOptions = function (x, width, height) {
 	return {
-		x: 0, y: height / 2, fontSize: Math.floor(height * 0.72),
-		anchor: 'left middle',
+		x: x, y: height / 2, fontSize: Math.floor(height * 0.72),
+		anchor: 'center middle',
 		attributes: {fill: 'red', stroke: 'black'}
 	};
 };
 
 const getText = function (text, width, height) {
-	const toSVGOptions = getSVGOptions(width, height);
 	const len = text.length;
-	const spacing = (width - 10) / (len + 1);
+	const spacing = (width - 2) / (len + 1);
 	var i = -1;
 	var out = [];
-	
+
 	while (++i < len) {
-		var charPath = textToSVG.getD(text[i], toSVGOptions);
+		var charPath = textToSVG.getD(text[i],
+			getSVGOptions((i + 1) * spacing, width, height));
 		// randomly scale it to 95% - 105%, skew
-		var randomScale = random.int(95, 105) / 100;
-		var randomTranslateX = (i + 1) * spacing + random.int(-2, 2);
-		var randomTranslateY = random.int(-3, 3);
+		var randomMatrix = random.matrix();
 		var color = random.greyColor(0, 4);
-		var randomSkewX = random.int(-7, 7);
 		out.push(`<path fill="${color}" d="${charPath}"
-			transform="scale(${randomScale})
-			translate(${randomTranslateX},${randomTranslateY})
-			skewX(${randomSkewX})"/>`);
+			transform="matrix(${randomMatrix})"/>`);
 	}
 
 	return out.join('');
@@ -86,7 +81,7 @@ const createCaptcha = function (options) {
 			${bg}
 		</svg>`;
 
-	return xml.replace('\t', '');
+	return xml.replace(/[\t]/g, '').replace(/\n(\W)/g, '$1');
 };
 
 module.exports = createCaptcha;
