@@ -1,10 +1,11 @@
 {
   "name": "svg-captcha",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "generate svg captcha in node.js or express.js",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js",
+    "test": "xo && mocha",
+	"lint": "xo",
     "test:visual": "node test-visual.js"
   },
   "repository": {
@@ -29,5 +30,17 @@
   "homepage": "https://github.com/steambap/svg-captcha#readme",
   "dependencies": {
     "text-to-svg": "^3.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3",
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "envs": [
+      "mocha"
+    ],
+    "rules": {
+      "linebreak-style": 0
+    }
   }
 }

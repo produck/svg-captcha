@@ -18,13 +18,13 @@ const getLineNoise = function (lv, width, height) {
 	var i = -1;
 
 	while (++i < lv) {
-		var start = random.int(5, 25) + ' ' + 
+		var start = random.int(5, 25) + ' ' +
 			random.int(10, height - 10);
-		var end = random.int(width - 25, width - 5) + ' ' + 
+		var end = random.int(width - 25, width - 5) + ' ' +
 			random.int(10, height - 10);
-		var mid1 = random.int(width / 2 - 25, width / 2 + 25) + ' ' + 
+		var mid1 = random.int((width / 2) - 25, (width / 2) + 25) + ' ' +
 			random.int(10, height - 10);
-		var mid2 = random.int(width / 2 - 25, width / 2 + 25) + ' ' + 
+		var mid2 = random.int((width / 2) - 25, (width / 2) + 25) + ' ' +
 			random.int(10, height - 10);
 		var color = random.greyColor();
 		noiseString.push(`<path d="M${start} C${mid1},${mid2},${end}"

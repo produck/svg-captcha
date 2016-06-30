@@ -32,7 +32,7 @@ app.get('/captcha', function (req, res) {
 ```
 
 ## sample image
-![image](media/example.svg)
+![image](media/example.png)
 
 ## why use svg?
 

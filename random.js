@@ -3,7 +3,7 @@
 const presets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 const randomInt = function (min, max) {
-	return Math.round(min + Math.random() * (max - min));
+	return Math.round(min + (Math.random() * (max - min)));
 };
 
 exports.int = randomInt;

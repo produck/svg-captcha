@@ -32,7 +32,7 @@ app.get('/captcha', function (req, res) {
 ```
 
 ## 图片示例
-![image](media/example.svg)
+![image](media/example.png)
 
 ## 为什么使用 svg 格式?
 
