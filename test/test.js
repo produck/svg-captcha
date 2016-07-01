@@ -17,7 +17,7 @@ describe('svg captcha', function () {
 	});
 });
 
-const random = require('../random');
+const random = require('../lib/random');
 
 describe('random function', function () {
 	it('should generate random integer', function () {

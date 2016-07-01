@@ -1,6 +1,8 @@
-[![Build Status](https://travis-ci.org/steambap/svg-captcha.svg?branch=master)](https://travis-ci.org/steambap/svg-captcha)
+![svg-captcha](media/header.png)
 
 # svg captcha
+
+[![Build Status](https://travis-ci.org/lemonce/svg-captcha.svg?branch=master)](https://travis-ci.org/steambap/svg-captcha)
 
 generate svg captcha in node.js
 
@@ -10,7 +12,7 @@ generate svg captcha in node.js
 - have issue with install c++ addon
 
 ## usage
-```
+```js
 var svgCaptcha = require('svg-captcha');
 // generate random text of length 4
 var text = svgCaptcha.randomText();
@@ -18,7 +20,7 @@ var text = svgCaptcha.randomText();
 var captcha = svgCaptcha(text);
 ```
 with express
-```
+```js
 var svgCaptcha = require('svg-captcha');
 
 app.get('/captcha', function (req, res) {
@@ -37,7 +39,18 @@ app.get('/captcha', function (req, res) {
 ## why use svg?
 
 It does not require any c++ addon.  
-It uses opentype.js underneath and the result image is smaller than jpeg image.
+The result image is smaller than jpeg image.
+
+> This has to be a joke. /\<text.+\>;.+\<\/text\>/g.test...
+
+svg captcha uses opentype.js underneath, which means that there is no
+'&lt;text&gt;1234&lt;/text&gt;'.  
+You get
+'&lt;path fill="#444" d="M104.83 19.74L107.85 19.74L112 33.56L116.13 19.74L119.15 19.74L113.48 36.85...'  
+instead.  
+  
+Even though you can write a program that convert svg to png, svg captcha has done its job  
+—— make captcha recognition harder
 
 ## Translations
 [中文](README_CN.md)

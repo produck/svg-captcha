@@ -1,6 +1,8 @@
-[![Build Status](https://travis-ci.org/steambap/svg-captcha.svg?branch=master)](https://travis-ci.org/steambap/svg-captcha)
+![svg-captcha](media/header.png)
 
 # svg验证码
+
+[![Build Status](https://travis-ci.org/lemonce/svg-captcha.svg?branch=master)](https://travis-ci.org/steambap/svg-captcha)
 
 在node.js中生成svg格式的验证码
 
@@ -10,7 +12,7 @@
 - 无法安装 c++ 模块
 
 ## 使用方法
-```
+```js
 var svgCaptcha = require('svg-captcha');
 // generate random text of length 4
 var text = svgCaptcha.randomText();
@@ -18,7 +20,7 @@ var text = svgCaptcha.randomText();
 var captcha = svgCaptcha(text);
 ```
 在 express中使用
-```
+```js
 var svgCaptcha = require('svg-captcha');
 
 app.get('/captcha', function (req, res) {
@@ -37,7 +39,7 @@ app.get('/captcha', function (req, res) {
 ## 为什么使用 svg 格式?
 
 不需要引用 c++ 模块。  
-使用 opentype.js了，而且svg图片比jpeg格式图片要小
+svg图片比jpeg格式图片要小。
 
 ## Translations
 [中文](README_CN.md)
