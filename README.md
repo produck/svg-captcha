@@ -6,10 +6,16 @@
 
 generate svg captcha in node.js
 
+## Translations
+[中文](README_CN.md)
+
 ## useful if you
 
 - cannot or do not want to use google recaptcha
 - have issue with install c++ addon
+
+## install
+> npm install --save svg-captcha
 
 ## usage
 ```js
@@ -51,9 +57,6 @@ instead.
   
 Even though you can write a program that convert svg to png, svg captcha has done its job  
 —— make captcha recognition harder
-
-## Translations
-[中文](README_CN.md)
 
 ## License
 [MIT](LICENSE.md)
