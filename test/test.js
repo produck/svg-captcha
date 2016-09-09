@@ -18,6 +18,14 @@ describe('svg captcha', function () {
 		}
 	});
 
+	it('should filter unwanted chars', function () {
+		const opt = {ignoreChars: '0123456789'};
+		for (let i = 0; i < 62; i++) {
+			let text = svgCaptcha.randomText(opt);
+			assert(/^[a-zA-Z]+$/.test(text));
+		}
+	});
+
 	it('should generate svg', function () {
 		assert(xmlReg.test(svgCaptcha()));
 		assert(xmlReg.test(svgCaptcha({text: 'abcd'})));

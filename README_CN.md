@@ -39,6 +39,16 @@ app.get('/captcha', function (req, res) {
 });
 ```
 
+## API
+`svgCaptcha.randomText([size|options])`  
+该方法默认生成由4个字母/数字组成的字符串.  
+可选参数:
+- size: number  
+生成的字符串的长度  
+- options: object  
+定义生成的字符串的长度或者忽略某些字符.  
+例如 { size: 6, ignoreChars: '1234567890' } 会生成由6个字母组成的字符串，没有数字.
+
 ## 图片示例
 ![image](media/example.png)
 

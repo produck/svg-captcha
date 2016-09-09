@@ -39,6 +39,16 @@ app.get('/captcha', function (req, res) {
 });
 ```
 
+## API
+`svgCaptcha.randomText([size|options])`  
+By default, you will get a random string of four characters.  
+The optional params are:
+- size: number  
+the size of the random string  
+- options: object  
+you can specify the size of the random string and filter out some characters.  
+e.g. { size: 6, ignoreChars: '1234567890' }. This will generate a string of 6 characters with letters only.
+
 ## sample image
 ![image](media/example.png)
 
