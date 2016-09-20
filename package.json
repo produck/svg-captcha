@@ -1,12 +1,12 @@
 {
   "name": "svg-captcha",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "generate svg captcha in node.js or express.js",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/test.js",
     "lint": "xo",
-    "test:visual": "node test-visual.js"
+    "test:visual": "node test/visual.js"
   },
   "repository": {
     "type": "git",
@@ -37,11 +37,6 @@
     "xo": "^0.16.0"
   },
   "xo": {
-    "envs": [
-      "mocha"
-    ],
-    "rules": {
-      "linebreak-style": 0
-    }
+		"esnext": true
   }
 }
