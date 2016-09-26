@@ -21,7 +21,7 @@
   "author": {
     "name": "Weilin Shi",
     "email": "934587911@qq.com",
-    "url": "steambap.github.io"
+    "url": "weilinshi.org"
   },
   "license": "MIT",
   "bugs": {
@@ -29,14 +29,21 @@
   },
   "homepage": "https://github.com/steambap/svg-captcha#readme",
   "dependencies": {
-    "opentype.js": "^0.6.4"
+    "opentype.js": "^0.6.5"
   },
   "devDependencies": {
-    "mocha": "^2.5.3",
+    "mocha": "^3.0.2",
     "mocha-sugar-free": "^1.3.1",
     "xo": "^0.16.0"
   },
   "xo": {
-		"esnext": true
-  }
+    "esnext": true
+  },
+  "typings": "index.d.ts",
+  "files": [
+    "fonts/*",
+    "lib/*",
+    "index.d.ts",
+    "*.md"
+  ]
 }
