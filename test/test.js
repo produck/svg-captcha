@@ -1,11 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const mochaSugar = require('mocha-sugar-free');
 const svgCaptcha = require('../');
-
-const describe = mochaSugar.describe;
-const it = mochaSugar.it;
 
 const xmlReg = /^<svg[\s\S]+\/svg>$/;
 const textTagReg = /text/;
