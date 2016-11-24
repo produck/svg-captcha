@@ -20,34 +20,46 @@
 ## 使用方法
 ```js
 var svgCaptcha = require('svg-captcha');
-// generate random text of length 4
+// 生成驗證碼字符
 var text = svgCaptcha.randomText();
-// generate svg image
+// 生成 svg 圖片
 var captcha = svgCaptcha(text);
+// 一起生成
+var c = svgCaptcha.create();
+console.log(c);
+// {data: '<svg.../svg>', text: 'abcd'}
 ```
 在 express中使用
-```js
+```Javascript
 var svgCaptcha = require('svg-captcha');
 
 app.get('/captcha', function (req, res) {
-	var text = svgCaptcha.randomText();
-	var captcha = svgCaptcha(text);
-	req.session.captcha = text;
+	var captcha = svgCaptcha.create();
+	req.session.captcha = captcha.text;
 	
 	res.set('Content-Type', 'image/svg+xml');
-	res.status(200).send(captcha);
+	res.status(200).send(captcha.data);
 });
 ```
 
 ## API
+`svgCaptcha.create(options)`  
+如果沒有任何參數，則生成的 svg 圖片有4個字符。  
+  
+options: object  
+{  
+&nbsp;&nbsp;size: 4 // 驗證碼長度  
+&nbsp;&nbsp;ignoreChars: '0o1i' // 驗證碼字符中排除 0o1i  
+&nbsp;&nbsp;noise: 1 // 干擾綫條的數量  
+&nbsp;&nbsp;color: true // 驗證碼的字符有顔色  
+&nbsp;&nbsp;background: '#cc9966' // 驗證碼圖片背景顔色  
+}
+
+以上配置對象會用來調用以下兩個接口  
 `svgCaptcha.randomText([size|options])`  
-该方法默认生成由4个字母/数字组成的字符串.  
-可选参数:
-- size: number  
-生成的字符串的长度  
-- options: object  
-定义生成的字符串的长度或者忽略某些字符.  
-例如 { size: 6, ignoreChars: '1234567890' } 会生成由6个字母组成的字符串，没有数字.
+`svgCaptcha(text, options)`  
+在 1.1.0 版本之前你需要調用上面的兩個接口，但是現在只需要調用 create()  
+一個接口就行，可以少打幾個字了 (^_^)/
 
 ## 图片示例
 ![image](media/example.png)

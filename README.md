@@ -18,36 +18,48 @@ generate svg captcha in node.js
 > npm install --save svg-captcha
 
 ## usage
-```js
+```Javascript
 var svgCaptcha = require('svg-captcha');
 // generate random text of length 4
 var text = svgCaptcha.randomText();
 // generate svg image
 var captcha = svgCaptcha(text);
+// generate both and returns an object
+var captcha = svgCaptcha.create();
+console.log(c);
+// {data: '<svg.../svg>', text: 'abcd'}
 ```
 with express
-```js
+```Javascript
 var svgCaptcha = require('svg-captcha');
 
 app.get('/captcha', function (req, res) {
-	var text = svgCaptcha.randomText();
-	var captcha = svgCaptcha(text);
-	req.session.captcha = text;
+	var captcha = svgCaptcha.create();
+	req.session.captcha = captcha.text;
 	
 	res.set('Content-Type', 'image/svg+xml');
-	res.status(200).send(captcha);
+	res.status(200).send(captcha.data);
 });
 ```
 
 ## API
+`svgCaptcha.create(options)`  
+If no option is passed, you will get a random string of four characters and corresponding svg.  
+  
+options: object  
+{  
+&nbsp;&nbsp;size: 4 // size of random string  
+&nbsp;&nbsp;ignoreChars: '0o1i' // filter out some characters like 0o1i  
+&nbsp;&nbsp;noise: 1 // number of noise lines  
+&nbsp;&nbsp;color: true // characters will have distinct colors instead of grey  
+&nbsp;&nbsp;background: '#cc9966' // background color of the svg image  
+}
+
+The previous options will be passed to the following functions
 `svgCaptcha.randomText([size|options])`  
-By default, you will get a random string of four characters.  
-The optional params are:
-- size: number  
-the size of the random string  
-- options: object  
-you can specify the size of the random string and filter out some characters.  
-e.g. { size: 6, ignoreChars: '1234567890' }. This will generate a string of 6 characters with letters only.
+`svgCaptcha(text, options)`
+In pre 1.1.0 version you have to call these two functions,  
+now you can call create() to save some key strokes ;).
 
 ## sample image
 ![image](media/example.png)

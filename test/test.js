@@ -24,11 +24,11 @@ describe('svg captcha', () => {
 
 	it('should generate svg', () => {
 		assert(xmlReg.test(svgCaptcha()));
-		assert(xmlReg.test(svgCaptcha({text: 'abcd'})));
+		assert(xmlReg.test(svgCaptcha('abcd')));
 	});
 
 	it('should generate path', () => {
-		assert(!textTagReg.test(svgCaptcha({text: 'text'})));
+		assert(!textTagReg.test(svgCaptcha('text')));
 	});
 
 	it('should be fast', () => {
@@ -39,6 +39,12 @@ describe('svg captcha', () => {
 	}, {
 		slow: 50,
 		timeout: 100
+	});
+
+	it('should return a object with create api', () => {
+		const c = svgCaptcha.create();
+		assert(xmlReg.test(c.data));
+		assert.equal(c.text.length, 4);
 	});
 });
 
@@ -55,5 +61,10 @@ describe('random function', () => {
 	it('should generate grey color', () => {
 		assert(random.greyColor());
 		assert(random.greyColor(3, 4));
+	});
+
+	it('should generate color', () => {
+		assert(random.color(4, 0));
+		assert(random.color(4, 1));
 	});
 });
