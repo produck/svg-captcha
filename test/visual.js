@@ -15,7 +15,7 @@ fs.writeFile(`test10.svg`, svg.create({
 	size: 3,
 	noise: 3,
 	color: true,
-	background: '#f2f3f5'
+	background: '#152736'
 }).data, 'utf8', err => {
 	if (err) {
 		console.error(err);

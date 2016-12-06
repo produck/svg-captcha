@@ -33,8 +33,7 @@ describe('svg captcha', () => {
 
 	it('should be fast', () => {
 		for (let i = 0; i < 100; i++) {
-			const text = svgCaptcha.randomText();
-			svgCaptcha(text);
+			svgCaptcha.create();
 		}
 	}, {
 		slow: 50,

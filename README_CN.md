@@ -20,11 +20,7 @@
 ## 使用方法
 ```js
 var svgCaptcha = require('svg-captcha');
-// 生成驗證碼字符
-var text = svgCaptcha.randomText();
-// 生成 svg 圖片
-var captcha = svgCaptcha(text);
-// 一起生成
+
 var c = svgCaptcha.create();
 console.log(c);
 // {data: '<svg.../svg>', text: 'abcd'}
@@ -44,22 +40,22 @@ app.get('/captcha', function (req, res) {
 
 ## API
 `svgCaptcha.create(options)`  
-如果沒有任何參數，則生成的 svg 圖片有4個字符。  
+如果没有任何参数，则生成的 svg 图片有4个字符。  
   
 options: object  
 {  
-&nbsp;&nbsp;size: 4 // 驗證碼長度  
-&nbsp;&nbsp;ignoreChars: '0o1i' // 驗證碼字符中排除 0o1i  
-&nbsp;&nbsp;noise: 1 // 干擾綫條的數量  
-&nbsp;&nbsp;color: true // 驗證碼的字符有顔色  
-&nbsp;&nbsp;background: '#cc9966' // 驗證碼圖片背景顔色  
+&nbsp;&nbsp;size: 4 // 验证码长度  
+&nbsp;&nbsp;ignoreChars: '0o1i' // 验证码字符中排除 0o1i  
+&nbsp;&nbsp;noise: 1 // 干扰线条的数量  
+&nbsp;&nbsp;color: true // 验证码的字符是否有颜色，默认没有，如果设定了背景，则默认有  
+&nbsp;&nbsp;background: '#cc9966' // 验证码图片背景颜色  
 }
 
-以上配置對象會用來調用以下兩個接口  
+以上配置对象会用来调用以下两个接口  
 `svgCaptcha.randomText([size|options])`  
 `svgCaptcha(text, options)`  
-在 1.1.0 版本之前你需要調用上面的兩個接口，但是現在只需要調用 create()  
-一個接口就行，可以少打幾個字了 (^_^)/
+在 1.1.0 版本之前你需要调用上面的两个接口，但是现在只需要调用 create()  
+一个接口就行，可以少打几个字了 (^_^)/
 
 ## 图片示例
 ![image](media/example.png)

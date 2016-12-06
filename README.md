@@ -20,11 +20,7 @@ generate svg captcha in node.js
 ## usage
 ```Javascript
 var svgCaptcha = require('svg-captcha');
-// generate random text of length 4
-var text = svgCaptcha.randomText();
-// generate svg image
-var captcha = svgCaptcha(text);
-// generate both and returns an object
+
 var captcha = svgCaptcha.create();
 console.log(c);
 // {data: '<svg.../svg>', text: 'abcd'}
@@ -51,7 +47,7 @@ options: object
 &nbsp;&nbsp;size: 4 // size of random string  
 &nbsp;&nbsp;ignoreChars: '0o1i' // filter out some characters like 0o1i  
 &nbsp;&nbsp;noise: 1 // number of noise lines  
-&nbsp;&nbsp;color: true // characters will have distinct colors instead of grey  
+&nbsp;&nbsp;color: true // characters will have distinct colors instead of grey, true if background option is set  
 &nbsp;&nbsp;background: '#cc9966' // background color of the svg image  
 }
 
