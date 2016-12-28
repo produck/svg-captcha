@@ -57,8 +57,22 @@ options: object
 在 1.1.0 版本之前你需要调用上面的两个接口，但是现在只需要调用 create()  
 一个接口就行，可以少打几个字了 (^_^)/
 
+`返回:` 对象  
+(属性) data: string  
+(属性) text: string  
+
+`svgCaptcha.createMathExpr(options)`  
+和前面的 api 的参数和返回值都一样。不同的是这个 api 生成的 svg 是一个算数式，而
+text 属性上是算数式的结果。不过用法和之前是完全一样的。
+
 ## 图片示例
+默认生成图片：
+
 ![image](media/example.png)
+
+生成数学公式并且有颜色的验证码：
+
+![image2](media/example-2.png)
 
 ## 为什么使用 svg 格式?
 

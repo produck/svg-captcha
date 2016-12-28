@@ -66,4 +66,16 @@ describe('random function', () => {
 		assert(random.color(4, 0));
 		assert(random.color(4, 1));
 	});
+
+	it('should generate math expression', () => {
+		for (let i = 0; i < 10; i++) {
+			const expr = random.mathExpr();
+
+			assert(typeof expr.text === 'string');
+			assert(/^\d+$/.test(expr.text));
+
+			assert(typeof expr.equation === 'string');
+			assert(/^\d+[\+\-\*\/]\d+$/.test(expr.equation));
+		}
+	});
 });

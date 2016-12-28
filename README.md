@@ -57,8 +57,24 @@ The previous options will be passed to the following functions
 In pre 1.1.0 version you have to call these two functions,  
 now you can call create() to save some key strokes ;).
 
+`return:` object  
+(property) data: string  
+(property) text: string  
+
+`svgCaptcha.createMathExpr(options)`  
+Similar to create api, you have the same options and return value. 
+The difference is that data is a svg will be an math equation on screen 
+and text will be the result of that equation in string, otherwise the usage 
+is the same as above.
+
 ## sample image
+default captcha image:
+
 ![image](media/example.png)
+
+math expression image with color options:
+
+![image2](media/example-2.png)
 
 ## why use svg?
 
