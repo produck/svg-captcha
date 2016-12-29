@@ -1,26 +1,55 @@
 /**
- * This main exported function takes a string as input
- * and returns a svg image
+ * config captcha generation options
  */
-export function createCaptcha(text: string): string;
-export namespace createCaptcha {
+interface ConfigObject {
 	/**
-	 * generate random text of length 4
+	 * default: false
+	 * if false, captcha will be black and white
+	 * otherwise, it will be randomly colorized
 	 */
-	export function randomText(size: number): string;
+	color?: boolean,
 	/**
-	 * This method returns a object that has two props:
-	 * data: svg image
-	 * text: captcha text
+	 * default: ''
+	 * filter out some characters
 	 */
-	export function create(options: Object): Object;
+	ignoreChars?: string,
 	/**
-	 * This method returns a object that has two props:
-	 * data: svg image
-	 * text: captcha text
-	 * note that this method generate a math expression
-	 * this means that text is the result of the math expression
+	 * default: 1
+	 * number of noise lines
 	 */
-	export function createMathExpr(options: Object): Object;
+	noise?: number,
+	/**
+	 * default: white
+	 * background color of svg image
+	 */
+	background?: string,
 }
-export default createCaptcha;
+/**
+ * result of captcha generation
+ */
+interface CaptchaObj {
+	/**
+	 * the captcha text,
+	 * store this in your session
+	 */
+	text: string,
+	/**
+	 * the svg image in string,
+	 * set type of image/svg before send to client side
+	 */
+	data: string
+}
+/**
+ * This method returns a object that has two props:
+ * data: svg image string
+ * text: captcha text
+ */
+export function create(options?: ConfigObject): CaptchaObj;
+/**
+ * This method returns a object that has two props:
+ * data: svg image string
+ * text: captcha text
+ * note that this method generate a math expression
+ * this means that text is the result of the math expression
+ */
+export function createMathExpr(options?: ConfigObject): CaptchaObj;
