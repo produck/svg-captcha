@@ -75,7 +75,7 @@ describe('random function', () => {
 			assert(/^\d+$/.test(expr.text));
 
 			assert(typeof expr.equation === 'string');
-			assert(/^\d+[\+\-\*\/]\d+$/.test(expr.equation));
+			assert(/^\d+[+\-*/]\d+$/.test(expr.equation));
 		}
 	});
 });
