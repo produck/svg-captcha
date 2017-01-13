@@ -45,6 +45,16 @@ describe('svg captcha', () => {
 		assert(xmlReg.test(c.data));
 		assert.equal(c.text.length, 4);
 	});
+
+	it('global options', () => {
+		const defaultPreset = svgCaptcha.options.charPreset;
+		svgCaptcha.options.charPreset = '0123456789';
+		for (let i = 0; i < 62; i++) {
+			const text = svgCaptcha.randomText();
+			assert(/^[0-9]+$/.test(text));
+		}
+		svgCaptcha.options.charPreset = defaultPreset;
+	});
 });
 
 const random = require('../lib/random');

@@ -1,28 +1,44 @@
 /**
  * config captcha generation options
  */
-interface ConfigObject {
+class ConfigObject {
+	/**
+	 * width of captcha
+	 */
+	width?: number;
+	/**
+	 * height of captcha
+	 */
+	height?: number;
+	/**
+	 * captcha text size
+	 */
+	fontSize?: number;
+	/**
+	 * random character preset
+	 */
+	charPreset?: string;
 	/**
 	 * default: false
 	 * if false, captcha will be black and white
 	 * otherwise, it will be randomly colorized
 	 */
-	color?: boolean,
+	color?: boolean;
 	/**
 	 * default: ''
 	 * filter out some characters
 	 */
-	ignoreChars?: string,
+	ignoreChars?: string;
 	/**
 	 * default: 1
 	 * number of noise lines
 	 */
-	noise?: number,
+	noise?: number;
 	/**
 	 * default: white
 	 * background color of svg image
 	 */
-	background?: string,
+	background?: string;
 }
 /**
  * result of captcha generation
@@ -53,3 +69,11 @@ export function create(options?: ConfigObject): CaptchaObj;
  * this means that text is the result of the math expression
  */
 export function createMathExpr(options?: ConfigObject): CaptchaObj;
+/**
+ * Override the default font with your own
+ */
+export function loadFont(url: string): void;
+/**
+ * captcha generation global setting
+ */
+export const options: ConfigObject;

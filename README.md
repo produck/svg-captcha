@@ -39,33 +39,48 @@ app.get('/captcha', function (req, res) {
 ```
 
 ## API
-`svgCaptcha.create(options)`  
+
+#### `svgCaptcha.create(options)`  
 If no option is passed, you will get a random string of four characters and corresponding svg.  
   
-options: object  
-{  
-&nbsp;&nbsp;size: 4 // size of random string  
-&nbsp;&nbsp;ignoreChars: '0o1i' // filter out some characters like 0o1i  
-&nbsp;&nbsp;noise: 1 // number of noise lines  
-&nbsp;&nbsp;color: true // characters will have distinct colors instead of grey, true if background option is set  
-&nbsp;&nbsp;background: '#cc9966' // background color of the svg image  
-}
+* `size`: 4 // size of random string  
+* `ignoreChars`: '0o1i' // filter out some characters like 0o1i  
+* `noise`: 1 // number of noise lines  
+* `color`: true // characters will have distinct colors instead of grey, true if background option is set  
+* `background`: '#cc9966' // background color of the svg image  
 
-The previous options will be passed to the following functions
-`svgCaptcha.randomText([size|options])`  
-`svgCaptcha(text, options)`
-In pre 1.1.0 version you have to call these two functions,  
-now you can call create() to save some key strokes ;).
+This function returns an object that has the following property:
+* `data`: string // svg path data
+* `text`: string // captcha text
 
-`return:` object  
-(property) data: string  
-(property) text: string  
-
-`svgCaptcha.createMathExpr(options)`  
+#### `svgCaptcha.createMathExpr(options)`  
 Similar to create api, you have the same options and return value. 
 The difference is that data is a svg will be an math equation on screen 
 and text will be the result of that equation in string, otherwise the usage 
 is the same as above.
+
+#### `svgCaptcha.loadFont(url)`
+Load your own font and override the default font.
+* `url`: string // path to your font
+This api is a wrapper around loadFont api of opentype.js.  
+Your may need experiment around various options to make your own font accessible.  
+See the following api.
+
+#### `svgCaptcha.options`
+Gain access to global setting object. 
+It is used for create and createMathExpr api as the default options.  
+  
+In addition to size, noise, color, and background, you can also set the following property:
+* `width`: number // width of captcha
+* `height`: number // height of captcha
+* `fontSize`: number // captcha text size
+* `charPreset`: string // random character preset
+
+#### deprecated apis
+`svgCaptcha.randomText([size|options])`  
+`svgCaptcha(text, options)`  
+In pre 1.1.0 version you have to call these two functions,  
+now you can call create() to save some key strokes ;).
 
 ## sample image
 default captcha image:
