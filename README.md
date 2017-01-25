@@ -76,9 +76,11 @@ In addition to size, noise, color, and background, you can also set the followin
 * `fontSize`: number // captcha text size
 * `charPreset`: string // random character preset
 
-#### deprecated apis
-`svgCaptcha.randomText([size|options])`  
-`svgCaptcha(text, options)`  
+#### `svgCaptcha.randomText([size|options])`  
+return a random string.
+#### `svgCaptcha(text, options)`
+return a svg captcha based on text provided.  
+
 In pre 1.1.0 version you have to call these two functions,  
 now you can call create() to save some key strokes ;).
 

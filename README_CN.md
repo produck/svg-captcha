@@ -74,9 +74,10 @@ create和createMathExpr接口的默认配置就是使用的这个对象。
 * `fontSize`: number // captcha text size
 * `charPreset`: string // random character preset
 
-#### 不再使用的接口  
-`svgCaptcha.randomText([size|options])`  
-`svgCaptcha(text, options)`  
+#### `svgCaptcha.randomText([size|options])`
+返回随机字符串
+#### `svgCaptcha(text, options)`
+返回基于text参数生成得svg路径  
 在 1.1.0 版本之前你需要调用上面的两个接口，但是现在只需要调用 create()  
 一个接口就行，可以少打几个字了 (^_^)/
 

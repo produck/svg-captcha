@@ -77,3 +77,7 @@ export function loadFont(url: string): void;
  * captcha generation global setting
  */
 export const options: ConfigObject;
+/**
+ * return a random string
+ */
+export function randomText(size): string;
