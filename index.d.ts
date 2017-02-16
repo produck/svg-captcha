@@ -1,7 +1,7 @@
 /**
  * config captcha generation options
  */
-class ConfigObject {
+declare class ConfigObject {
 	/**
 	 * width of captcha
 	 */
