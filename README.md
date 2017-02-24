@@ -1,8 +1,6 @@
 ![svg-captcha](media/header.png)
 
-# svg captcha
-
-[![Build Status](https://travis-ci.org/lemonce/svg-captcha.svg?branch=master)](https://travis-ci.org/steambap/svg-captcha)
+# svg captcha [![Build Status](https://travis-ci.org/lemonce/svg-captcha.svg?branch=master)](https://travis-ci.org/steambap/svg-captcha)
 
 generate svg captcha in node.js
 

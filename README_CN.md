@@ -1,8 +1,6 @@
 ![svg-captcha](media/header.png)
 
-# svg验证码
-
-[![Build Status](https://travis-ci.org/lemonce/svg-captcha.svg?branch=master)](https://travis-ci.org/steambap/svg-captcha)
+# svg验证码 [![Build Status](https://travis-ci.org/lemonce/svg-captcha.svg?branch=master)](https://travis-ci.org/steambap/svg-captcha)
 
 在node.js中生成svg格式的验证码
 

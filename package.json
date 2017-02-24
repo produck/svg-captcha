@@ -16,7 +16,8 @@
     "captcha",
     "svg",
     "node captcha",
-    "captcha generator"
+    "captcha generator",
+    "captcha alternative"
   ],
   "author": {
     "name": "Weilin Shi",
