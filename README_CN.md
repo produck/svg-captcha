@@ -5,7 +5,7 @@
 在node.js中生成svg格式的验证码
 
 ## Translations
-[英文](README.md)
+[English](README.md)
 
 ## 什么情况下使用SVG验证码？
 
