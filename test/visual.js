@@ -20,3 +20,11 @@ for (let i = 0; i < 10; i++) {
 		}
 	});
 }
+
+fs.writeFile(`test20.svg`, svg.create({inverse: true}).data, 'utf8', err => {
+	if (err) {
+		console.error(err);
+	} else {
+		console.log('it\'s saved');
+	}
+});

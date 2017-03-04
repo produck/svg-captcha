@@ -25,6 +25,13 @@ declare class ConfigObject {
 	 */
 	color?: boolean;
 	/**
+	 * default: false
+	 * if set to true, it will draw with light grey color
+	 * use if you have a site with dark theme
+	 * only active when color is set to false
+	 */
+	inverse?: boolean;
+	/**
 	 * default: ''
 	 * filter out some characters
 	 */
