@@ -1,8 +1,12 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const svg = require('../');
 
+const TEST_DIR = 'svg-test';
+
+fs.ensureDirSync(TEST_DIR);
+
 for (let i = 0; i < 10; i++) {
-	fs.writeFile(`test${i}.svg`, svg(svg.randomText()), 'utf8', err => {
+	fs.writeFile(`${TEST_DIR}/${i}.svg`, svg(svg.randomText()), 'utf8', err => {
 		if (err) {
 			console.error(err);
 		} else {
@@ -12,7 +16,7 @@ for (let i = 0; i < 10; i++) {
 }
 
 for (let i = 0; i < 10; i++) {
-	fs.writeFile(`test1${i}.svg`, svg.createMathExpr({color: true}).data, 'utf8', err => {
+	fs.writeFile(`${TEST_DIR}/1${i}.svg`, svg.createMathExpr({color: true}).data, 'utf8', err => {
 		if (err) {
 			console.error(err);
 		} else {
@@ -21,7 +25,7 @@ for (let i = 0; i < 10; i++) {
 	});
 }
 
-fs.writeFile(`test20.svg`, svg.create({inverse: true}).data, 'utf8', err => {
+fs.writeFile(`${TEST_DIR}/20.svg`, svg.create({inverse: true}).data, 'utf8', err => {
 	if (err) {
 		console.error(err);
 	} else {

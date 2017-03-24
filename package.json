@@ -36,8 +36,9 @@
     "opentype.js": "^0.6.9"
   },
   "devDependencies": {
+    "fs-extra": "^2.1.2",
     "mocha": "^3.2.0",
-    "xo": "^0.17.1"
+    "xo": "^0.18.0"
   },
   "xo": {
     "esnext": true,
