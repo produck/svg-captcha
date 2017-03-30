@@ -1857,9 +1857,9 @@ xo-init@^0.5.0:
     the-argv "^1.0.0"
     write-pkg "^2.0.0"
 
-xo@^0.18.0:
-  version "0.18.0"
-  resolved "http://registry.npm.taobao.org/xo/download/xo-0.18.0.tgz#7c9e7932259a9cd2b1b8b602cbc7ee84bb5f858d"
+xo@^0.18.1:
+  version "0.18.1"
+  resolved "https://registry.npmjs.org/xo/-/xo-0.18.1.tgz#529bb1cbd612f200221d76df90639d5c88cedf54"
   dependencies:
     arrify "^1.0.0"
     debug "^2.2.0"
