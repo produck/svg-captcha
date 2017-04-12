@@ -20,7 +20,7 @@ generate svg captcha in node.js
 var svgCaptcha = require('svg-captcha');
 
 var captcha = svgCaptcha.create();
-console.log(c);
+console.log(captcha);
 // {data: '<svg.../svg>', text: 'abcd'}
 ```
 with express
