@@ -33,18 +33,21 @@
   },
   "homepage": "https://github.com/steambap/svg-captcha#readme",
   "dependencies": {
-    "opentype.js": "^0.6.9"
+    "opentype.js": "^0.7.1"
   },
   "devDependencies": {
-    "fs-extra": "^2.1.2",
+    "fs-extra": "^3.0.1",
     "mocha": "^3.3.0",
-    "xo": "^0.18.1"
+    "xo": "^0.18.2"
   },
   "xo": {
     "esnext": true,
     "envs": [
       "mocha"
-    ]
+    ],
+    "rules": {
+      "linebreak-style": [0]
+    }
   },
   "typings": "index.d.ts",
   "files": [
