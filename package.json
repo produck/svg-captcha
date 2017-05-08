@@ -1,6 +1,6 @@
 {
   "name": "svg-captcha",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "generate svg captcha in node.js or express.js",
   "main": "index.js",
   "scripts": {
@@ -46,7 +46,9 @@
       "mocha"
     ],
     "rules": {
-      "linebreak-style": [0]
+      "linebreak-style": [
+        0
+      ]
     }
   },
   "typings": "index.d.ts",
