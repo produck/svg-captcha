@@ -66,6 +66,8 @@ interface CaptchaObj {
  * This method returns a object that has two props:
  * data: svg image string
  * text: captcha text
+ * @param {ConfigObject} [options]
+ * @return {CaptchaObj}
  */
 export function create(options?: ConfigObject): CaptchaObj;
 /**
@@ -74,10 +76,13 @@ export function create(options?: ConfigObject): CaptchaObj;
  * text: captcha text
  * note that this method generate a math expression
  * this means that text is the result of the math expression
+ * @param {ConfigObject} [options]
+ * @return {CaptchaObj}
  */
 export function createMathExpr(options?: ConfigObject): CaptchaObj;
 /**
  * Override the default font with your own
+ * @param {string} url
  */
 export function loadFont(url: string): void;
 /**
@@ -86,5 +91,7 @@ export function loadFont(url: string): void;
 export const options: ConfigObject;
 /**
  * return a random string
+ * @param {number} size
+ * @return {string}
  */
 export function randomText(size): string;
