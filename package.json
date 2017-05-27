@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "fs-extra": "^3.0.1",
-    "mocha": "^3.4.1",
+    "mocha": "^3.4.2",
     "xo": "^0.18.2"
   },
   "xo": {
