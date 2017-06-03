@@ -13,7 +13,8 @@
                 "--colors",
                 "${workspaceRoot}/test/test.js"
             ],
-            "internalConsoleOptions": "openOnSessionStart"
+            "internalConsoleOptions": "openOnSessionStart",
+            "protocol": "inspector"
         }
     ]
 }

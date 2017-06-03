@@ -1,3 +1,8 @@
+1.3.6 / 2017-06-03
+===================
+
+* Improve security by randomize svg path command
+
 1.3.5 / 2017-05-08
 ===================
 
