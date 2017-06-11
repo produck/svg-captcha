@@ -1,6 +1,6 @@
 {
   "name": "svg-captcha",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "generate svg captcha in node.js or express.js",
   "main": "index.js",
   "scripts": {
@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/steambap/svg-captcha#readme",
   "dependencies": {
-    "opentype.js": "^0.7.1"
+    "opentype.js": "^0.7.2"
   },
   "devDependencies": {
     "fs-extra": "^3.0.1",

@@ -1274,9 +1274,9 @@ onetime@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/onetime/-/onetime-1.1.0.tgz#a1f7838f8314c516f05ecefcbc4ccfe04b4ed789"
 
-opentype.js@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/opentype.js/-/opentype.js-0.7.1.tgz#8e0bb32d99f3d092563797237eb824b45eaf3c1f"
+opentype.js@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/opentype.js/-/opentype.js-0.7.2.tgz#cfe1c98f12f858a269ac00cd3b6de5d5f67d90af"
   dependencies:
     tiny-inflate "^1.0.2"
 
