@@ -1,0 +1,1 @@
+[http://contributor-covenant.org/version/1/0/0/](http://contributor-covenant.org/version/1/0/0/)
