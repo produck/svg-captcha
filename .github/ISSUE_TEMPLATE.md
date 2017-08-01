@@ -1,5 +1,3 @@
-**Which version of svg-captcha are you using?**
-
 **Do you want to request a *feature* or report a *bug*?**
 
 **If this is a feature request, what is motivation for changing the behavior?**
