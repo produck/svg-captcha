@@ -1,3 +1,4 @@
+'use strict';
 const random = require('../lib/random');
 
 test('Generate random int', () => {

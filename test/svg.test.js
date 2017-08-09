@@ -1,3 +1,4 @@
+'use strict';
 const svgCaptcha = require('../');
 
 test('Generate random test', () => {

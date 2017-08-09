@@ -1,3 +1,4 @@
+'use strict';
 const svgCaptcha = require('../');
 // Quick seeded random
 let seed = 10;
