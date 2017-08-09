@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "jest": "^20.0.4",
+    "jest-environment-node-debug": "^2.0.0",
     "xo": "^0.18.2"
   },
   "xo": {

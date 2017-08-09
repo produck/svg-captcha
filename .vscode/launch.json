@@ -5,16 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Jest Tests",
             "type": "node",
             "request": "launch",
-            "name": "Mocha Tests",
-            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-            "args": [
-                "--colors",
-                "${workspaceRoot}/test/test.js"
+            "runtimeArgs": [
+                "--inspect-brk",
+                "./node_modules/jest/bin/jest.js",
+                "-i",
+                "--env",
+                "jest-environment-node-debug"
             ],
-            "internalConsoleOptions": "openOnSessionStart",
-            "protocol": "inspector"
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector",
+            "console": "integratedTerminal",
+            "sourceMaps": true
         }
     ]
 }
