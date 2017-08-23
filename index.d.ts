@@ -94,4 +94,4 @@ export const options: ConfigObject;
  * @param {number} size
  * @return {string}
  */
-export function randomText(size): string;
+export function randomText(size: number): string;
