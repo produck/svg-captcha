@@ -3,6 +3,10 @@
  */
 declare class ConfigObject {
 	/**
+	 * The length of the random string
+	 */
+	size?: number;
+	/**
 	 * width of captcha
 	 */
 	width?: number;
