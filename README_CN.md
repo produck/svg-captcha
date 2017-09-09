@@ -1,8 +1,14 @@
 ![svg-captcha](media/header.png)
 
-# svg验证码 [![Build Status](https://travis-ci.org/lemonce/svg-captcha.svg?branch=master)](https://travis-ci.org/steambap/svg-captcha)
+<div align="center">
 
-在node.js中生成svg格式的验证码
+[![Build Status](https://img.shields.io/travis/lemonce/svg-captcha/master.svg?style=flat-square)](https://travis-ci.org/lemonce/svg-captcha)
+[![NPM Version](https://img.shields.io/npm/v/svg-captcha.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha)
+[![NPM Downloads](https://img.shields.io/npm/dm/svg-captcha.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha)
+
+</div>
+
+> 在node.js中生成svg格式的验证码
 
 ## Translations
 [English](README.md)
@@ -13,7 +19,9 @@
 - 无法安装 c++ 模块
 
 ## 安装
-> npm install --save svg-captcha
+```
+npm install --save svg-captcha
+```
 
 ## 使用方法
 ```js

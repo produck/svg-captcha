@@ -1,8 +1,14 @@
 ![svg-captcha](media/header.png)
 
-# svg captcha [![Build Status](https://travis-ci.org/lemonce/svg-captcha.svg?branch=master)](https://travis-ci.org/steambap/svg-captcha)
+<div align="center">
 
-generate svg captcha in node.js
+[![Build Status](https://img.shields.io/travis/lemonce/svg-captcha/master.svg?style=flat-square)](https://travis-ci.org/lemonce/svg-captcha)
+[![NPM Version](https://img.shields.io/npm/v/svg-captcha.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha)
+[![NPM Downloads](https://img.shields.io/npm/dm/svg-captcha.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha)
+
+</div>
+
+> generate svg captcha in node.js
 
 ## Translations
 [中文](README_CN.md)
@@ -13,7 +19,9 @@ generate svg captcha in node.js
 - have issue with install c++ addon
 
 ## install
-> npm install --save svg-captcha
+```
+npm install --save svg-captcha
+```
 
 ## usage
 ```Javascript
