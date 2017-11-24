@@ -9,14 +9,9 @@ test('Generate random int', () => {
 	}
 });
 
-test('Generate grey color', () => {
-	expect(random.greyColor()).toBeTruthy();
-	expect(random.greyColor(3, 4)).toBeTruthy();
-});
-
-test('Generate color', () => {
-	expect(random.color('#333')).toBeTruthy();
-	expect(random.color('#ccc')).toBeTruthy();
+test('Generate inverted color', () => {
+	expect(random.invertColor('#333')).toBeTruthy();
+	expect(random.invertColor('#ccc')).toBeTruthy();
 });
 
 test('Generate math expression', () => {
