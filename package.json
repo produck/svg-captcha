@@ -21,7 +21,7 @@
   "author": {
     "name": "Weilin Shi",
     "email": "934587911@qq.com",
-    "url": "weilinshi.org"
+    "url": "http://weilinshi.org"
   },
   "engines": {
     "node": ">=4.x"
