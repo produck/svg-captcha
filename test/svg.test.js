@@ -22,7 +22,7 @@ test.skip('Old svgCaptcha() api', () => {
 	expect(svgCaptcha('abcd')).toMatch(xmlReg);
 });
 
-test.skip('Current create() api', () => {
+test('Current create() api', () => {
 	const c = svgCaptcha.create();
 	expect(c.data).toMatch(xmlReg);
 	expect(c.text.length).toEqual(4);
