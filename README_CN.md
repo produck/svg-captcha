@@ -24,7 +24,7 @@ npm install --save svg-captcha
 ```
 
 ## 使用方法
-```js
+```Javascript
 var svgCaptcha = require('svg-captcha');
 
 var c = svgCaptcha.create();
@@ -39,7 +39,7 @@ app.get('/captcha', function (req, res) {
 	var captcha = svgCaptcha.create();
 	req.session.captcha = captcha.text;
 	
-	res.type('svg');
+	res.type('svg'); // 使用ejs等模板时如果报错 res.type('html')
 	res.status(200).send(captcha.data);
 });
 ```
