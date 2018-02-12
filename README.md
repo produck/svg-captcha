@@ -1,7 +1,3 @@
-![svg-captcha](media/header.png)
-
-<div align="center">
-
 [![NPM Version](https://img.shields.io/npm/v/svg-captcha-express.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha-express)
 [![NPM Downloads](https://img.shields.io/npm/dm/svg-captcha-express.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha-express)
 
@@ -118,7 +114,7 @@ Even though you can write a program that convert svg to png, svg captcha has don
 —— make captcha recognition harder
 
 # Issues
-Please [add issues](/issues) if you have a question or found a problem. Pull requests are welcome too!
+Please [add issues](https://github.com/lazarofl/svg-captcha-express/issues) if you have a question or found a problem. Pull requests are welcome too!
 
 ## License
 [MIT](LICENSE.md)
