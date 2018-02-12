@@ -37,11 +37,6 @@ declare class ConfigObject {
 	 */
 	inverse?: boolean;
 	/**
-	 * default: ''
-	 * filter out some characters
-	 */
-	ignoreChars?: string;
-	/**
 	 * default: 1
 	 * number of noise lines
 	 */
@@ -75,16 +70,6 @@ interface CaptchaObj {
  * @return {CaptchaObj}
  */
 export function create(options?: ConfigObject): CaptchaObj;
-/**
- * This method returns a object that has two props:
- * data: svg image string
- * text: captcha text
- * note that this method generate a math expression
- * this means that text is the result of the math expression
- * @param {ConfigObject} [options]
- * @return {CaptchaObj}
- */
-export function createMathExpr(options?: ConfigObject): CaptchaObj;
 /**
  * Override the default font with your own
  * @param {string} url
