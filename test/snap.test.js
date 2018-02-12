@@ -12,11 +12,6 @@ test.skip('Renders SVG', () => {
 	expect(c.data).toMatchSnapshot();
 });
 
-test.skip('Renders math Expression', () => {
-	const c = svgCaptcha.createMathExpr({color: true});
-	expect(c.data).toMatchSnapshot();
-});
-
 test.skip('Renders SVG on dark background', () => {
 	const c = svgCaptcha.create({inverse: true});
 	expect(c.data).toMatchSnapshot();

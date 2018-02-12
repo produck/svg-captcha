@@ -1,6 +1,6 @@
 {
-  "name": "svg-captcha",
-  "version": "2.0.0-beta1",
+  "name": "svg-captcha-express",
+  "version": "1.0.0",
   "description": "generate svg captcha in node.js",
   "main": "index.js",
   "scripts": {
@@ -32,12 +32,14 @@
   },
   "homepage": "https://github.com/steambap/svg-captcha#readme",
   "dependencies": {
-    "opentype.js": "^0.7.3"
+    "opentype.js": "0.7.3"
   },
   "devDependencies": {
-    "jest": "^21.1.0",
-    "jest-environment-node-debug": "^2.0.0",
-    "xo": "^0.18.2"
+    "express": "4.16.2",
+    "express-session": "1.15.6",
+    "jest": "21.1.0",
+    "jest-environment-node-debug": "2.0.0",
+    "xo": "0.18.2"
   },
   "xo": {
     "esnext": true,
