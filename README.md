@@ -2,68 +2,92 @@
 
 <div align="center">
 
-[![Build Status](https://img.shields.io/travis/lemonce/svg-captcha/master.svg?style=flat-square)](https://travis-ci.org/lemonce/svg-captcha)
-[![NPM Version](https://img.shields.io/npm/v/svg-captcha.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha)
-[![NPM Downloads](https://img.shields.io/npm/dm/svg-captcha.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha)
+[![NPM Version](https://img.shields.io/npm/v/svg-captcha-express.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha-express)
+[![NPM Downloads](https://img.shields.io/npm/dm/svg-captcha-express.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha-express)
 
 </div>
 
-> generate svg captcha in node.js
-
-## Translations
-[中文](README_CN.md)
+> Generate SVG captcha in NodeJS Express applications
 
 ## useful if you
 
 - cannot or do not want to use google recaptcha
 - have issue with install c++ addon
+- have issue with install canvas dependency
 
 ## install
 ```
-npm install --save svg-captcha
+npm install --save svg-captcha-express
 ```
 
 ## usage
 ```Javascript
-var svgCaptcha = require('svg-captcha');
+'use strict'
 
-var captcha = svgCaptcha.create();
-console.log(captcha);
-// {data: '<svg.../svg>', text: 'abcd'}
-```
-with express
-```Javascript
-var svgCaptcha = require('svg-captcha');
+const express = require('express')
+const session = require('express-session')
+const bodyParser = require('body-parser')
 
-app.get('/captcha', function (req, res) {
-	var captcha = svgCaptcha.create();
-	req.session.captcha = captcha.text;
-	
-	res.type('svg');
-	res.status(200).send(captcha.data);
-});
+const captchaUrl = '/captcha.jpg'
+const captchaSessionId = 'captcha'
+const captchaFieldName = 'captcha'
+
+const captcha = require('svg-captcha-express').create({ 
+    cookie: captchaSessionId
+})
+
+const app = express()
+app.use(session({
+    secret: 'your secret',
+    resave: false,
+    saveUninitialized: true,
+}))
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.get(captchaUrl, captcha.image())
+
+app.get('/', (req, res) => {
+    res.type('html')
+    res.end(`
+        <img src="${ captchaUrl }"/>
+        <form action="/login" method="post">
+            <input type="text" name="${ captchaFieldName }"/>
+            <input type="submit"/>
+        </form>
+        <a href='/'>refresh</a>
+    `)
+})
+
+app.post('/login', (req, res) => {
+    res.type('html')
+    res.end(`
+        <p>CAPTCHA VALID: ${ captcha.check(req, req.body[captchaFieldName]) }</p>
+    `)
+})
 ```
 
 ## API
 
-#### `svgCaptcha.create(options)`  
-If no option is passed, you will get a random string of four characters and corresponding svg.  
-  
+#### `svgCaptchaExpress.create(options)`
+
+* `cookie`: `'captcha'`,
+* `background`: `'rgb(255,200,150)'`,
+* `fontSize`: `60`,
+* `width`: `250`,
+* `height`: `150`,
+* `charPreset`: `'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'`,
+* `size`: `5`,
+* `noise`: `1`
 * `size`: 4 // size of random string  
-* `ignoreChars`: '0o1i' // filter out some characters like 0o1i  
-* `noise`: 1 // number of noise lines  
-* `color`: true // characters will have distinct colors instead of grey, true if background option is set  
-* `background`: '#cc9966' // background color of the svg image  
+* `color`: false // will generate random color for each character
 
-This function returns an object that has the following property:
-* `data`: string // svg path data
-* `text`: string // captcha text
+#### `svgCaptcha.image()`
+Will return an SVG captcha response result
 
-#### `svgCaptcha.createMathExpr(options)`  
-Similar to create api, you have the same options and return value. 
-The difference is that data is a svg will be an math equation on screen 
-and text will be the result of that equation in string, otherwise the usage 
-is the same as above.
+#### `svgCaptcha.check(req, text, caseSensitive)`
+* `req`: express request
+* `text`: Captcha input data
+* `caseSensitive`: default `true`
 
 #### `svgCaptcha.loadFont(url)`
 Load your own font and override the default font.
@@ -72,32 +96,10 @@ This api is a wrapper around loadFont api of opentype.js.
 Your may need experiment around various options to make your own font accessible.  
 See the following api.
 
-#### `svgCaptcha.options`
-Gain access to global setting object. 
-It is used for create and createMathExpr api as the default options.  
-  
-In addition to size, noise, color, and background, you can also set the following property:
-* `width`: number // width of captcha
-* `height`: number // height of captcha
-* `fontSize`: number // captcha text size
-* `charPreset`: string // random character preset
-
-#### `svgCaptcha.randomText([size|options])`  
-return a random string.
-#### `svgCaptcha(text, options)`
-return a svg captcha based on text provided.  
-
-In pre 1.1.0 version you have to call these two functions,  
-now you can call create() to save some key strokes ;).
-
 ## sample image
 default captcha image:
 
 ![image](media/example.png)
-
-math expression image with color options:
-
-![image2](media/example-2.png)
 
 ## why use svg?
 
@@ -114,6 +116,9 @@ instead.
   
 Even though you can write a program that convert svg to png, svg captcha has done its job  
 —— make captcha recognition harder
+
+# Issues
+Please [add issues](/issues) if you have a question or found a problem. Pull requests are welcome too!
 
 ## License
 [MIT](LICENSE.md)
