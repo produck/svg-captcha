@@ -1,5 +1,6 @@
 [![NPM Version](https://img.shields.io/npm/v/svg-captcha-express.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha-express)
 [![NPM Downloads](https://img.shields.io/npm/dm/svg-captcha-express.svg?style=flat-square)](https://www.npmjs.com/package/svg-captcha-express)
+[![Buils status](https://travis-ci.org/lazarofl/svg-captcha-express.svg?branch=master)](https://travis-ci.org/lazarofl/svg-captcha-express)
 
 </div>
 

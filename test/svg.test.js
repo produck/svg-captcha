@@ -1,5 +1,5 @@
 'use strict';
-const svgCaptcha = require('../');
+const svgCaptcha = require('../lib/captcha');
 
 test.skip('Generate random test', () => {
 	for (let i = 0; i < 100; i++) {
@@ -25,7 +25,7 @@ test.skip('Old svgCaptcha() api', () => {
 test('Current create() api', () => {
 	const c = svgCaptcha.create();
 	expect(c.data).toMatch(xmlReg);
-	expect(c.text.length).toEqual(4);
+	expect(c.text.length).toEqual(5);
 });
 
 test.skip('Global charPreset options', () => {

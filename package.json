@@ -39,7 +39,8 @@
     "express-session": "1.15.6",
     "jest": "21.1.0",
     "jest-environment-node-debug": "2.0.0",
-    "xo": "0.18.2"
+    "xo": "0.18.2",
+    "yarn": "^1.6.0"
   },
   "xo": {
     "esnext": true,
