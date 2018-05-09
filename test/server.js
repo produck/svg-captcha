@@ -1,5 +1,6 @@
 'use strict'
 
+const path = require('path');
 const express = require('express')
 const session = require('express-session')
 const bodyParser = require('body-parser')
@@ -14,6 +15,8 @@ const captcha = require('./../index').create({
     size: 4,
     noise: 3
 })
+
+captcha.loadFont(path.join(__dirname, '../fonts/airstrike.ttf'))
 
 const app = express()
 app.use(session({

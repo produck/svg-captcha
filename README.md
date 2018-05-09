@@ -32,6 +32,9 @@ const captcha = require('svg-captcha-express').create({
     cookie: captchaSessionId
 })
 
+//load custom font (optional)   
+captcha.loadFont(path.join(__dirname, '../fonts/airstrike.ttf'))
+
 const app = express()
 app.use(session({
     secret: 'your secret',
