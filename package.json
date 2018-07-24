@@ -32,7 +32,8 @@
   },
   "homepage": "https://github.com/steambap/svg-captcha#readme",
   "dependencies": {
-    "opentype.js": "^0.7.3"
+    "opentype.js": "^0.7.3",
+    "randexp": "^0.5.3"
   },
   "devDependencies": {
     "jest": "^21.1.0",
