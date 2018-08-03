@@ -120,5 +120,9 @@ Even though you can write a program that convert svg to png, svg captcha has don
 # Issues
 Please [add issues](https://github.com/lazarofl/svg-captcha-express/issues) if you have a question or found a problem. Pull requests are welcome too!
 
+# To-dos
+
+- [ ] Math Expressions
+
 ## License
 [MIT](LICENSE.md)
