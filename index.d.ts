@@ -51,6 +51,11 @@ declare class ConfigObject {
 	 * background color of svg image
 	 */
 	background?: string;
+	/**
+	 * default: ''
+	 * viewBox of svg
+	 */
+	viewBox?: string;
 }
 /**
  * result of captcha generation
