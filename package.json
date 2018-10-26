@@ -1,32 +1,44 @@
 {
   "name": "svg-captcha",
-  "version": "0.9.0",
-  "description": "generate svg captcha in node.js or express.js",
+  "version": "3.0.0",
+  "description": "generate svg captcha in node.js.",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/steambap/svg-captcha.git"
+    "url": "git+https://github.com/lemonce/svg-captcha.git"
   },
   "keywords": [
     "captcha",
     "svg",
     "node captcha",
-    "captcha generator"
+    "captcha generator",
+    "captcha alternative"
   ],
   "author": {
     "name": "Weilin Shi",
     "email": "934587911@qq.com",
-    "url": "steambap.github.io"
+    "url": "http://steambap.github.io"
   },
+  "maintainers": [
+    {
+      "name": "ChaosLee",
+      "email": "lichao@or-change.cn"
+    }
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/steambap/svg-captcha/issues"
+    "url": "https://github.com/lemonce/svg-captcha/issues"
   },
-  "homepage": "https://github.com/steambap/svg-captcha#readme",
+  "homepage": "https://github.com/lemonce/svg-captcha/blob/master/README.md",
   "dependencies": {
-    "text-to-svg": "^3.0.1"
+    "opentype.js": "^0.11.0",
+    "randexp": "^0.5.3"
+  },
+  "devDependencies": {
+    "karma": "^3.1.1",
+    "koa": "^2.6.1"
   }
 }

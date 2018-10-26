@@ -1,69 +1,124 @@
-'use strict';
+const Randexp = require('randexp');
+const path = require('path');
 
-const textToSVG = require('text-to-svg').loadSync();
-const random = require('./random');
+// const font = require('./src/font');
+const SVGCaptcha = require('./src/captcha');
+const svg = require('./src/svg');
+const renderer = require('./src/renderer');
 
-const generateBackground = function (width, height) {
-	const f = random.int(40, 55);
-	
-	return `<filter id="n" x="0" y="0">
-		<feTurbulence
-			type="fractalNoise"
-			baseFrequency="0.${f}"
-			numOctaves="15"
-			stitchTiles="stitch"/>
-		</filter>
-		<rect width="${width}" height="${height}" filter="url(#n)" opacity="0.2"/>`
-};
+const simpleTextRandexp = new Randexp(/[0-9A-Za-z]{4}/);
+const DEFAULT_COLOR_LIST = ['#333333', '#666666', '#999999'];
 
-const getLineNoise = function (lv, width, height) {
-	const noiseString = [];
-	var i = -1;
-	
-	while (++i < lv) {
-		var start = random.int(5, 25) + ' ' + random.int(10, 40);
-		var end = random.int(125, 145) + ' ' + random.int(10, 40);
-		var mid1 = random.int(50, 100) + ' ' + random.int(10, 40);
-		var mid2 = random.int(50, 100) + ' ' + random.int(10, 40);
-		var color = random.greyColor();
-		noiseString.push(`<path d="M${start} C${mid1},${mid2},${end}"
-			stroke="${color}" fill="transparent"/>`);
+class SVGCaptchaFactory {
+	constructor({
+		validator = DEFAULT_VALIDATOR,
+		generator = DEFAULT_GENERATOR,
+		colorList = DEFAULT_COLOR_LIST,
+		
+		preEffector = [],
+		postEffector = [],
+		
+		fontRegistry,
+		fontStyle = {
+
+		},
+		height = 60,
+		width = 100
+	} = {}) {
+		this.$checkGenerator(generator);
+
+		this.$fontRegistry = fontRegistry;
+		this.$generator = generator;
+		this.$validator = validator;
+		this.$colorList = colorList;
+
+		this.$pathHandlerQueue = [];
+		this.$effectorQueue = {
+			pre: preEffector,
+			post: postEffector
+		};
+
+		this.$size = { height, width };
 	}
-	
-	return noiseString.join('');
-};
 
-const getSVGOptions = function (width, height) {
-	return {
-		x: width / 2, y: height / 2, fontSize: Math.floor(height * 0.72),
-		anchor: 'center middle',
-		attributes: {fill: 'red', stroke: 'black'}
-	};
-};
+	$checkGenerator(fn) {
+		const sample = fn();
 
-const createCaptcha = function (options) {
-	if (typeof options === 'string') {
-		options = {text: options};
+		if (isString(sample)) {
+			return true;
+		}
+
+		if (!isObject(sample)) {
+			return false;
+		}
+
+		const { text, data } = sample;
+
+		if (!isString(text) || data === undefined) {
+			return false;
+		}
 	}
-	options = options || {};
-	const width = options.width || 150;
-	const height = options.height || 50;
-	const noiseLv = options.noise || 3;
-	const text = options.text || random.captchaText();
-	
-	const lineNoise = getLineNoise(3, width, height);
-	const bg = generateBackground(width, height);
-	const toSVGOptions = getSVGOptions(width, height);
-	const textPath = textToSVG.getD(text, toSVGOptions);
-	const xml = `<svg xmlns="http://www.w3.org/2000/svg"
-		width="${width}" height="${height}">
-			<path fill="black" d="${textPath}" />
-			${lineNoise}
-			${bg}
-		</svg>`;
 
-	return xml;
+	$generate() {
+		const sample = this.$generator();
+
+		if (isString(sample)) {
+			return {
+				text: sample,
+				data: sample
+			};
+		}
+
+		return sample;
+	}
+
+	addFontByPathname(pathname) {
+
+	}
+
+	$renderSectionList(text) {
+		const preSectionList = [];
+
+		const textPathList = Array.from(text).map(char => {
+			const pathD = renderer.drawChar(char, this.$fontRegistry);
+
+			return `<path fill="#666666" d="${pathD}" />`;
+		});
+
+		const postSectionList = [];
+
+		return preSectionList.concat(textPathList).concat(postSectionList);
+	}
+
+	create() {
+		const { text, data } = this.$generate();
+
+		return new SVGCaptcha({
+			validator: this.$validator,
+			image: svg(Object({
+				sectionList: this.$renderSectionList(text)
+			}, this.$size)),
+			data
+		});
+	}
+}
+
+module.exports = function createSVGCaptchaFactory() {
+	return new SVGCaptchaFactory();
 };
 
-module.exports = createCaptcha;
-module.exports.randomText = random.captchaText;
+function isString(any) {
+	return typeof any === 'string';
+}
+
+function isObject(any) {
+	return any instanceof Object;
+}
+
+function DEFAULT_GENERATOR() {
+	return simpleTextRandexp.gen();
+}
+
+function DEFAULT_VALIDATOR(testVal, data) {
+	return testVal === data;
+}
