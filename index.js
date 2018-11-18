@@ -2,7 +2,7 @@ const Randexp = require('randexp');
 const path = require('path');
 
 // const font = require('./src/font');
-const SVGCaptcha = require('./src/captcha');
+const SVGCaptcha = require('./src/captcha/SvgCaptcha');
 const svg = require('./src/svg');
 const renderer = require('./src/renderer');
 
@@ -18,12 +18,14 @@ class SVGCaptchaFactory {
 		preEffector = [],
 		postEffector = [],
 		
-		fontRegistry,
+		fontRegistry = [],
 		fontStyle = {
 
 		},
-		height = 60,
-		width = 100
+		size = {
+			height: 60,
+			width: 100
+		}
 	} = {}) {
 		this.$checkGenerator(generator);
 
@@ -38,7 +40,7 @@ class SVGCaptchaFactory {
 			post: postEffector
 		};
 
-		this.$size = { height, width };
+		this.$size = size;
 	}
 
 	$checkGenerator(fn) {
@@ -72,8 +74,8 @@ class SVGCaptchaFactory {
 		return sample;
 	}
 
-	addFontByPathname(pathname) {
-
+	registerFont(font) {
+		return this.$fontRegistry.registerFont(font);
 	}
 
 	$renderSectionList(text) {
@@ -90,7 +92,7 @@ class SVGCaptchaFactory {
 		return preSectionList.concat(textPathList).concat(postSectionList);
 	}
 
-	create() {
+	createCaptcha() {
 		const { text, data } = this.$generate();
 
 		return new SVGCaptcha({
