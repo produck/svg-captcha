@@ -8,10 +8,10 @@ module.exports = class SVGCaptcha {
 
 		this.image = '';
 		
-		this.reRender();
+		this.render();
 	}
 
-	reRender() {
+	render() {
 		return this.image = renderer.draw(this.$text, this.$factory.renderOptions);
 	}
 

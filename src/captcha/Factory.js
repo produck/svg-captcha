@@ -6,8 +6,8 @@ module.exports = class SVGCaptchaFactory {
 
 		this.$generator = generator;
 		
-		this.validator = validator;
-		this.renderOptions = renderOptions;
+		this.$validator = validator;
+		this.$renderOptions = renderOptions;
 	}
 
 	$generate() {
@@ -23,7 +23,7 @@ module.exports = class SVGCaptchaFactory {
 		return sample;
 	}
 
-	createCaptcha() {
+	create() {
 		return new SVGCaptcha(this.$generate(), this);
 	}
 };
