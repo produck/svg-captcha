@@ -1,6 +1,6 @@
 {
   "name": "svg-captcha-express",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "generate svg captcha in node.js",
   "main": "index.js",
   "scripts": {
