@@ -51,6 +51,22 @@ declare class ConfigObject {
 	 * background color of svg image
 	 */
 	background?: string;
+	/**
+	 * default: +
+	 * the math operator to use, "+", "-" or "+/-"
+	 * if unknown operator passed defaults to "+/-"
+	 */
+	mathOperator?: string;
+	/**
+	 * default: 1
+	 * min value of the math expression
+	 */
+	mathMin?: number;
+	/**
+	 * default: 9
+	 * max value of the math expression
+	 */
+	mathMax?: number;
 }
 /**
  * result of captcha generation
