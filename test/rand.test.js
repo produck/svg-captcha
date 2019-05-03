@@ -19,10 +19,34 @@ test('Generate color', () => {
 	expect(random.color('#ccc')).toBeTruthy();
 });
 
-test('Generate math expression', () => {
+test('Generate math expression using default values 1, 9 and +', () => {
 	for (let i = 0; i < 10; i++) {
 		const expr = random.mathExpr();
-		expect(expr.text).toMatch(/^\d+$/);
-		expect(expr.equation).toMatch(/^\d+[+\-*/]\d+$/);
+		expect(expr.text).toMatch(/^-?[0-9]\d*$/);
+		expect(expr.equation).toMatch(/^\d+[+]\d+$/);
+	}
+});
+
+test('Generate math expression using non default numbers but default +, 1, 20', () => {
+	for (let i = 0; i < 10; i++) {
+		const expr = random.mathExpr(1,20);
+		expect(expr.text).toMatch(/^-?[0-9]\d*$/);
+		expect(expr.equation).toMatch(/^\d+[+]\d+$/);
+	}
+});
+
+test('Generate math expression using non default numbers with minus', () => {
+	for (let i = 0; i < 10; i++) {
+		const expr = random.mathExpr(1,20, '-');
+		expect(expr.text).toMatch(/^-?[0-9]\d*$/);
+		expect(expr.equation).toMatch(/^\d+[-]\d+$/);
+	}
+});
+
+test('Generate math expression using non default numbers with "+/-"', () => {
+	for (let i = 0; i < 10; i++) {
+		const expr = random.mathExpr(1,20, '-');
+		expect(expr.text).toMatch(/^-?[0-9]\d*$/);
+		expect(expr.equation).toMatch(/^\d+[+/-]\d+$/);
 	}
 });

@@ -60,10 +60,14 @@ This function returns an object that has the following property:
 * `text`: string // captcha text
 
 #### `svgCaptcha.createMathExpr(options)`  
-Similar to create api, you have the same options and return value. 
-The difference is that data is a svg will be an math equation on screen 
-and text will be the result of that equation in string, otherwise the usage 
-is the same as above.
+Similar to create api, you have the above options plus 3 additional:
+* `mathMin`: 1 // the minimum value the math expression can be
+* `mathMax`: 9 // the maximum value the math expression can be
+* `mathOperator`: + // The operator to use, `+`, `-` or `+-` (for random `+` or `-`)
+
+This function returns an object that has the following property:
+* `data`: string // svg of the math expression
+* `text`: string // the answer of the math expression
 
 #### `svgCaptcha.loadFont(url)`
 Load your own font and override the default font.
