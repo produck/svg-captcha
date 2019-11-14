@@ -1,6 +1,6 @@
 {
   "name": "svg-captcha-express",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "generate svg captcha in node.js",
   "main": "index.js",
   "scripts": {
@@ -37,7 +37,7 @@
   "devDependencies": {
     "express": "4.16.2",
     "express-session": "1.15.6",
-    "jest": "21.1.0",
+    "jest": "^25.0.0",
     "jest-environment-node-debug": "2.0.0",
     "xo": "0.18.2",
     "yarn": "^1.6.0"

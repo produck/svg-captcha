@@ -21,66 +21,73 @@ npm install --save svg-captcha-express
 ## usage
 
 ```Javascript
-'use strict'
+'use strict';
 
-const express = require('express')
-const session = require('express-session')
-const bodyParser = require('body-parser')
+const express = require('express');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const path = require('path');
 
-const captchaUrl = '/captcha.jpg'
-const captchaMathUrl = '/captcha_math.jpg'
-const captchaSessionId = 'captcha'
-const captchaFieldName = 'captcha'
+const captchaUrl = '/captcha.jpg';
+const captchaMathUrl = '/captcha_math.jpg';
+const captchaSessionId = 'captcha';
+const captchaFieldName = 'captcha';
 
-const captcha = require('svg-captcha-express').create({
-    cookie: captchaSessionId
-})
+const captcha = require('./index').create({
+	cookie: captchaSessionId
+});
 
 //load custom font (optional)
-captcha.loadFont(path.join(__dirname, '../fonts/airstrike.ttf'))
+captcha.loadFont(path.join(__dirname, './fonts/Comismsh.ttf'));
 
-const app = express()
-app.use(session({
-    secret: 'your secret',
-    resave: false,
-    saveUninitialized: true,
-}))
-app.use(bodyParser.urlencoded({ extended: false }))
+const app = express();
+app.use(
+	session({
+		secret: 'your secret',
+		resave: false,
+		saveUninitialized: true
+	})
+);
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get(captchaUrl, captcha.image())
+app.get(captchaUrl, captcha.image());
 
-app.get(captchaMathUrl, captcha.math())
+app.get(captchaMathUrl, captcha.math());
 
 app.get('/', (req, res) => {
-    res.type('html')
-    res.end(`
-        <img src="${ captchaUrl }"/>
+	res.type('html');
+	res.end(`
+        <img src="${captchaUrl}"/>
         <form action="/login" method="post">
-            <input type="text" name="${ captchaFieldName }"/>
+            <input type="text" name="${captchaFieldName}"/>
             <input type="submit"/>
         </form>
         <a href='/'>refresh</a>
-    `)
-})
+    `);
+});
 
 app.get('/math', (req, res) => {
-    res.type('html')
-    res.end(`
-        <img src="${ captchaMathUrl }"/>
+	res.type('html');
+	res.end(`
+        <img src="${captchaMathUrl}"/>
         <form action="/login" method="post">
-            <input type="text" name="${ captchaFieldName }"/>
+            <input type="text" name="${captchaFieldName}"/>
             <input type="submit"/>
         </form>
         <a href='/math'>refresh</a>
-    `)
-})
+    `);
+});
 
 app.post('/login', (req, res) => {
-    res.type('html')
-    res.end(`
-        <p>CAPTCHA VALID: ${ captcha.check(req, req.body[captchaFieldName]) }</p>
-    `)
-})
+	res.type('html');
+	res.end(`
+        <p>CAPTCHA VALID: ${captcha.check(req, req.body[captchaFieldName])}</p>
+    `);
+});
+
+app.listen(3000, function () {
+  console.log('Listening on port 3000!');
+});
 ```
 
 ## API
