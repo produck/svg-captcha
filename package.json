@@ -1,6 +1,6 @@
 {
-  "name": "svg-captcha",
-  "version": "1.4.0",
+  "name": "svg-captcha-colorful",
+  "version": "1.5.0",
   "description": "generate svg captcha in node.js or express.js",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/steambap/svg-captcha.git"
+    "url": "git+https://github.com/cheft/svg-captcha.git"
   },
   "keywords": [
     "captcha",
@@ -19,17 +19,17 @@
     "captcha alternative"
   ],
   "author": {
-    "name": "Weilin Shi",
-    "email": "934587911@qq.com"
+    "name": "Cheft",
+    "email": "7720829@qq.com"
   },
   "engines": {
     "node": ">=4.x"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/steambap/svg-captcha/issues"
+    "url": "https://github.com/cheft/svg-captcha/issues"
   },
-  "homepage": "https://github.com/steambap/svg-captcha#readme",
+  "homepage": "https://github.com/cheft/svg-captcha#readme",
   "dependencies": {
     "opentype.js": "^0.7.3"
   },
