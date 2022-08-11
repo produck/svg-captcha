@@ -67,6 +67,10 @@ declare class ConfigObject {
 	 * max value of the math expression
 	 */
 	mathMax?: number;
+	/**
+	 * default: path.join(__dirname, "../fonts/Comismsh.ttf");
+	 */
+	font?: string;
 }
 /**
  * result of captcha generation
